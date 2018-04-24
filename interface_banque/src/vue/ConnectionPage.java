@@ -28,6 +28,7 @@ public class ConnectionPage extends JFrame {
 	private JPasswordField txtPassword;
 	public Principal princi;
 
+
 	/**
 	 * Create the frame.
 	 */

@@ -10,13 +10,19 @@ public class Model {
 
 	private LinkedList<CompteConnu> listCompteConnu;
 
-	
+	public static LinkedList<String> listCategorie;
 	
 	public Model() {
 		super();
 		this.listCompte = new LinkedList<Compte>();
 		this.listCredit = new LinkedList<Credit>();
 		this.listCompteConnu = new LinkedList<CompteConnu>();
+		listCategorie = new LinkedList<String>();
+		listCategorie.add("");
+		listCategorie.add("Loisir");
+		listCategorie.add("Alimentation");
+		listCategorie.add("Sortie");
+		listCategorie.add("Virement");
 	}
 
 	public LinkedList<Compte> getListCompte() {
