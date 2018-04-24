@@ -74,7 +74,7 @@ public class Principal extends JFrame {
 		getContentPane().add(lblGestionnaireDeComptes, BorderLayout.NORTH);
 		getContentPane().add(centerPane, BorderLayout.CENTER);
 
-		virPanel = new VirementPanel(new LinkedList<Courant>(), new LinkedList<CompteConnu>());
+		virPanel = new VirementPanel(new LinkedList<Compte>(), new LinkedList<Compte>());
 	}
 
 	public Principal getThis() {
@@ -163,8 +163,7 @@ public class Principal extends JFrame {
 
 	}
 
-	public void affichageVirement(LinkedList<Courant> listCompte, LinkedList<CompteConnu> listConnu){
-		System.out.println(listCompte);
+	public void affichageVirement(LinkedList<Compte> listCompte, LinkedList<Compte> listConnu){
 		virPanel.majComboCompteConnu(listConnu);
 		virPanel.majComboCompte(listCompte);
 		centerPane.removeAll();

@@ -1,5 +1,6 @@
 package utilitaires;
 
+import java.time.LocalDateTime;
 public class Date {
 	
 	private int day;
@@ -7,9 +8,9 @@ public class Date {
 	private int year;
 	
 	public Date() {
-		java.util.Date dateToday = new java.util.Date();
-		this.setDay(dateToday.getDay());
-		this.setMonth(dateToday.getMonth());
+		LocalDateTime dateToday = LocalDateTime.now();
+		this.setDay(dateToday.getDayOfMonth());
+		this.setMonth(dateToday.getMonthValue());
 		this.setYear(dateToday.getYear());
 	}
 	

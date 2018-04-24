@@ -32,13 +32,13 @@ public class VirementPanel extends JPanel {
 	private JLabel lblSolde;
 	private JButton btnValider, btnNouveauCompte;
 	private Compte compte;
-	private CompteConnu compteConnu;
+	private Compte compteConnu;
 	private CompteConnuDialog compteConnuDialog;
 
 	/**
 	 * Create the panel.
 	 */
-	public VirementPanel(LinkedList<Courant> listCompte, LinkedList<CompteConnu> listConnu) {
+	public VirementPanel(LinkedList<Compte> listCompte, LinkedList<Compte> listConnu) {
 		setLayout(new GridLayout(5,1));
 		montant = 0.0;
 
@@ -85,7 +85,7 @@ public class VirementPanel extends JPanel {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if(e.getStateChange() == 1) {
-					compteConnu = (CompteConnu)e.getItem();
+					compteConnu = (Compte)e.getItem();
 				}
 				
 			}
@@ -141,11 +141,11 @@ public class VirementPanel extends JPanel {
 		return compte;
 	}
 
-	public CompteConnu getCompteSelectionne() {
+	public Compte getCompteSelectionne() {
 		return compteConnu;
 	}
 	
-	public void addCompteConnu(CompteConnu newCompte) {
+	public void addCompteConnu(Compte newCompte) {
 		boxCompteConnu.addItem(newCompte);
 	}
 
@@ -153,16 +153,18 @@ public class VirementPanel extends JPanel {
 		return compteConnuDialog;
 	}
 	
-	public void majComboCompte(LinkedList<Courant> listCompte) {
-		for(Courant cout:listCompte) {
+	public void majComboCompte(LinkedList<Compte> listCompte) {
+		boxCompte.removeAllItems();
+		for(Compte cout:listCompte) {
 			boxCompte.addItem(cout);
 		}
 		this.revalidate();
 	}
 	
-	public void majComboCompteConnu(LinkedList<CompteConnu> listCompteConnu) {
-		for(CompteConnu cout:listCompteConnu) {
-			boxCompte.addItem(cout);
+	public void majComboCompteConnu(LinkedList<Compte> listConnu) {
+		boxCompteConnu.removeAllItems();
+		for(Compte cout:listConnu) {
+			boxCompteConnu.addItem(cout);
 		}
 		this.revalidate();
 	}

@@ -1,6 +1,6 @@
 package model;
 
-public class CompteConnu {
+public class CompteConnu extends Compte{
 
 	public int rib;
 
@@ -9,6 +9,7 @@ public class CompteConnu {
 	public String prenom;
 
 	public CompteConnu(int rib, String nom, String prenom) {
+		super();
 		this.rib = rib;
 		this.nom = nom;
 		this.prenom = prenom;

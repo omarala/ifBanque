@@ -65,12 +65,11 @@ public class Controleur {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				view.getPrincipal().affichageVirement(model.getListCourant(), model.getListCompteConnu());
+				view.getPrincipal().affichageVirement(model.getListCompte(), model.getListCompteConnu());
 
 			}
 		});
 
-		System.out.println("virpanel " + this.view.getPrincipal().getVirPanel().getBtnValider());
 
 		this.view.getPrincipal().getVirPanel().getBtnValider().addActionListener(new ActionListener() {
 

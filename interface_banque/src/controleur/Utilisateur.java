@@ -22,18 +22,23 @@ public class Utilisateur {
 		this.nom = nom;
 	}
 
-	public boolean transferer(Compte compteDebiteur, CompteConnu crediteur, double montant) {
+	public boolean transferer(Compte compteDebiteur, Compte crediteur, double montant) {
 		compteDebiteur.majSolde();
 		if (montant < compteDebiteur.getSolde()) {
 
 			Operation debit = new Operation("virement", new Date(), -montant);
 			compteDebiteur.getOpAVenir().addFirst(debit);
+			if(crediteur.isCourant() || crediteur.isLivret()) {
+				Operation credit = new Operation("virement", new Date(), montant);
+				crediteur.getOpAVenir().add(credit);
+				crediteur.majSolde();
+			}
 			return true;
 		}
 		return false;
 	}
 	
-	public void ajoutCompteConnu(LinkedList<CompteConnu> listCompteConnu, int rib, String nom, String prenom) {
+	public void ajoutCompteConnu(LinkedList<Compte> listCompteConnu, int rib, String nom, String prenom) {
 		CompteConnu nouveauCompte = new CompteConnu(rib, nom, prenom);
 		listCompteConnu.add(nouveauCompte);
 	}

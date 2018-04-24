@@ -35,10 +35,21 @@ public class Model {
 	}
 
 
-	public LinkedList<CompteConnu> getListCompteConnu() {
-		return listCompteConnu;
+	public LinkedList<Compte> getListCompteConnu() {
+		LinkedList<Compte> list = listCompte;
+		for(Compte c:listCompteConnu) {
+			list.add((Compte)c);
+		}
+		return list;
 	}
 
+	public LinkedList<Compte> toListCompte(){
+		LinkedList<Compte> list = new LinkedList<Compte>();
+		for(CompteConnu c:listCompteConnu) {
+			list.add(c);
+		}
+		return list;
+	}
 	public LinkedList<Livret> getListLivret(){
 		LinkedList<Livret> livrets = new LinkedList<Livret>();
 		for(Compte compte : listCompte) {
@@ -52,9 +63,7 @@ public class Model {
 	public LinkedList<Courant> getListCourant(){
 		LinkedList<Courant> courants = new LinkedList<Courant>();
 		for(Compte compte : listCompte) {
-//			System.out.println("compte");
 			if(compte.isCourant()) {
-//				System.out.println("courant");
 				courants.add((Courant)compte);
 			}
 		}
