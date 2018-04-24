@@ -3,17 +3,20 @@ package model;
 import java.sql.Date;
 
 public class Livret extends Compte {
-
-  public Livret(int idCompte) {
-		super(idCompte);
-		// TODO Auto-generated constructor stub
-	}
-
-private double taux;
+  
+  private double taux;
 
   private Date dateNextEcheance;
 
   private double soldeInitial;
+
+  public Livret(double taux, double soldeInitial) {
+    super();
+    this.taux = taux;
+    this.soldeInitial = soldeInitial;
+		// TODO Auto-generated constructor stub
+	}
+
 
   /** 
    *  renvoie le taux du livret
@@ -30,10 +33,25 @@ private double taux;
   }
 
   /** 
+   *  renvoie la date de la prochaine next echeance
+   */
+  public double getSoldeInitial() {
+    return this.soldeInitial;
+  }
+
+  /** 
    *  renvoie le montant des interets percus à la prochaine echeance
    */
   public double prochainInteret() {
-	return this.getSolde()*this.taux;
+	return soldeInitial*this.taux;
   }
 
+    @Override
+    public String toString(){
+      return "Livret" + getIdCompte();
+    }
+
+    public boolean isLivret(){
+      return true;
+    }
 }

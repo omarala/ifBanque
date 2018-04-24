@@ -1,6 +1,8 @@
 package model;
 
-import java.util.Date;
+import utilitaires.Date;
+
+import controleur.Controleur;
 
 public class Credit {
 
@@ -14,9 +16,9 @@ public class Credit {
 
 	private int duree;
 
-	public Credit(int idCredit, double taux, double montantEmprunte, Date dateDebut, int duree) {
+	public Credit(double taux, double montantEmprunte, Date dateDebut, int duree){
 		super();
-		this.idCredit = idCredit;
+		this.idCredit = Controleur.getId();
 		this.taux = taux;
 		this.montantEmprunte = montantEmprunte;
 		this.dateDebut = dateDebut;
@@ -68,6 +70,9 @@ public class Credit {
 		return 0.0;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Credit" + idCredit;
+	}
 
 }

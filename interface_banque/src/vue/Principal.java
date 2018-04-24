@@ -80,13 +80,13 @@ public class Principal extends JFrame {
 	public Principal getThis() {
 		return this;
 	}
-
+	
 	public void afficheListCompte(LinkedList<Compte> listCompte) {
 		
 		boxCompte = new JComboBox<>(listCompte.toArray());
 		majCenterPane();
 		boxCompte.addItemListener(new ItemListener() {
-
+			
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == 1) {
@@ -99,34 +99,53 @@ public class Principal extends JFrame {
 				}
 			}
 		});
-
+		
 		majCenterPane();
-
+		
 	}
 
 	public void afficheListCredit(LinkedList<Credit> listCredit) {
 		boxCompte = new JComboBox<>(listCredit.toArray());
 		majCenterPane();
-		boxCompte.addItemListener(new ItemListener() {
+		if(listCredit.size() == 1){
+			centerPane.removeAll();
+			centerPane.add(boxCompte);
+			Credit credit = (Credit) boxCompte.getSelectedItem();
+			CreditPanel apercu = new CreditPanel(credit);
+			centerPane.add(apercu, BorderLayout.SOUTH);
+			getThis().revalidate();
 
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				centerPane.removeAll();
-				centerPane.add(boxCompte);
-				Credit credit = (Credit) boxCompte.getSelectedItem();
-				CreditPanel apercu = new CreditPanel(credit);
-				centerPane.add(apercu, BorderLayout.SOUTH);
-				getThis().revalidate();
-			}
-		});
+		}else{
+			boxCompte.addItemListener(new ItemListener() {
+
+				@Override
+				public void itemStateChanged(ItemEvent e) {
+					centerPane.removeAll();
+					centerPane.add(boxCompte);
+					Credit credit = (Credit) boxCompte.getSelectedItem();
+					CreditPanel apercu = new CreditPanel(credit);
+					centerPane.add(apercu, BorderLayout.SOUTH);
+					getThis().revalidate();
+				}
+			});
+			
+		}
 		
-		majCenterPane();
 
 	}
 
 	public void afficheListLivret(LinkedList<Livret> listLivret) {
 		boxCompte = new JComboBox<>(listLivret.toArray());
 		majCenterPane();
+		if(listLivret.size() == 1){
+			centerPane.removeAll();
+			centerPane.add(boxCompte, BorderLayout.BEFORE_FIRST_LINE);
+			Livret livret = (Livret) boxCompte.getSelectedItem();
+			LivretPanel apercu = new LivretPanel(livret);
+			centerPane.add(apercu, BorderLayout.SOUTH);
+			getThis().revalidate();
+
+		}else{
 		boxCompte.addItemListener(new ItemListener() {
 
 			@Override
@@ -139,8 +158,8 @@ public class Principal extends JFrame {
 				getThis().revalidate();
 			}
 		});
+	}
 
-		majCenterPane();
 
 	}
 

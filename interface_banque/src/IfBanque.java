@@ -7,6 +7,8 @@ import controleur.Utilisateur;
 import model.Compte;
 import model.Courant;
 import model.Model;
+import model.Livret;
+import model.Credit;
 import model.Operation;
 import utilitaires.Date;
 import vue.Vue;
@@ -17,8 +19,9 @@ public class IfBanque {
 		Compte compte1 = new Courant(12324.5, false);
 		Compte compte2 = new Courant(123443, false);
 		Compte compte3 = new Courant(66443.6, true);
+		Livret LivretA = new Livret(0.5, 10000.0);
+		Credit dettes = new Credit(0.5, 100000.0, new Date(3, 1, 1905),  5);
 
-		
 		Operation op1 = new Operation("ezrjhe", new Date(3, 1, 2244), 1234.6);
 		Operation op2 = new Operation("credit", new Date(4, 12, 2003), 124.6);
 		Operation op3 = new Operation("debit", new Date(1, 12, 2331), -1234.6);
@@ -31,14 +34,13 @@ public class IfBanque {
 		model.getListCompte().add(compte1);
 		model.getListCompte().add(compte2);
 		model.getListCompte().add(compte3);
-		
+		model.getListCompte().add(LivretA);
+		model.getListCredit().add(dettes);
 		Utilisateur user = new Utilisateur(21312, "Thomas", "Leletty");
 		
 		Vue view = new Vue();
 		
 		Controleur cont = new Controleur(model, view, user);
 	}
-	
-	
 
 }
