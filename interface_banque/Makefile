@@ -38,5 +38,8 @@ exe:
 # in:bin/gui.jar TestCohabitation
 
 clean:
+	rm -rf bin/utilitaires/*.class
 	rm -rf bin/*.class
-
+	rm -rf bin/controleur/*.class
+	rm -rf bin/model/*.class
+	rm -rf bin/vue/*.class
