@@ -25,5 +25,10 @@ public class CompteConnu {
 	public String getPrenom() {
 		return this.prenom;
 	}
+	
+	@Override
+	public String toString() {
+		return ""+prenom+" "+nom.toUpperCase();
+	}
 
 }

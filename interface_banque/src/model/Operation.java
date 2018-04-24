@@ -1,6 +1,7 @@
 package model;
 
-import java.sql.Date;
+import controleur.Controleur;
+import utilitaires.Date;
 
 public class Operation {
 
@@ -12,9 +13,9 @@ public class Operation {
 
 	public double montant;
 
-	public Operation(int idOperation, String categorie, Date date, double montant) {
+	public Operation(String categorie, Date date, double montant) {
 		super();
-		this.idOperation = idOperation;
+		this.idOperation = Controleur.getId();
 		this.categorie = categorie;
 		this.date = date;
 		this.montant = montant;
@@ -56,7 +57,7 @@ public class Operation {
 		Object[] vect = new Object[4];
 		vect[0] = idOperation;
 		vect[1] = categorie;
-		vect[2] = ""+date.getDate()+"-"+date.getMonth()+"-"+date.getYear();
+		vect[2] = ""+date;
 		vect[3] = montant;
 		return vect;
 	}

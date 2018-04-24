@@ -58,7 +58,7 @@
 			CodeGeneration
 		</plugin>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Sun Apr 22 16:58:24 CEST 2018'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Mon Apr 23 14:44:19 CEST 2018'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -390,6 +390,13 @@
                 </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
+            <UML:Method xmi.id = '127-0-1-1-63844ac8:162f28743e3:-8000:0000000000000BA1'
+              name = '' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false'>
+              <UML:Method.specification>
+                <UML:Operation xmi.idref = '127-0-1-1-27e73e3a:162de965706:-8000:00000000000008BD'/>
+              </UML:Method.specification>
+            </UML:Method>
           </UML:Classifier.feature>
         </UML:Class>
         <UML:TagDefinition xmi.id = '127-0-1-1-27e73e3a:162de965706:-8000:0000000000000867'
@@ -2350,6 +2357,22 @@
       >taux : double</text>
       <text name="Fig1.4.2"
         x="113"
+        y="384"
+        width="230"
+        height="16"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >dateNextEcheance : Date</text>
+      <text name="Fig1.4.3"
+        x="113"
         y="400"
         width="230"
         height="22"
@@ -2413,6 +2436,22 @@
         justification="Left"
       >getTaux() : double</text>
       <text name="Fig1.6.2"
+        x="113"
+        y="440"
+        width="230"
+        height="16"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >getDateNextEcheance() : Date</text>
+      <text name="Fig1.6.3"
         x="113"
         y="456"
         width="230"

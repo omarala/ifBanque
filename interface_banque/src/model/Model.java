@@ -42,6 +42,18 @@ public class Model {
 		}
 		return livrets;
 	}
+	
+	public LinkedList<Courant> getListCourant(){
+		LinkedList<Courant> courants = new LinkedList<Courant>();
+		for(Compte compte : listCompte) {
+//			System.out.println("compte");
+			if(compte.isCourant()) {
+//				System.out.println("courant");
+				courants.add((Courant)compte);
+			}
+		}
+		return courants;
+	}
 
 
 }

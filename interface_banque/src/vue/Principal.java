@@ -2,10 +2,10 @@ package vue;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -19,9 +19,10 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import model.Compte;
+import model.CompteConnu;
+import model.Courant;
 import model.Credit;
 import model.Livret;
-import java.awt.event.ActionEvent;
 
 public class Principal extends JFrame {
 
@@ -31,6 +32,7 @@ public class Principal extends JFrame {
 	JButton btnVosLivrets;
 	JButton btnVosCredits;
 	JPanel centerPane;
+	VirementPanel virPanel;
 
 	/**
 	 * Create the panel.
@@ -45,23 +47,24 @@ public class Principal extends JFrame {
 
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.WEST);
-		panel.setLayout(new GridLayout(6, 2, 0, 0));
+		GridLayout grid = new GridLayout(6,0);
+		panel.setLayout(grid);
 
 		btnVosComptes = new JButton("Vos comptes");
 		btnVosComptes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		panel.add(btnVosComptes);
+		panel.add(btnVosComptes, 4, 0);
 
 		btnFaireUnVirement = new JButton("Faire un virement");
-		panel.add(btnFaireUnVirement);
+		panel.add(btnFaireUnVirement, 3, 0);
 
 		btnVosLivrets = new JButton("Vos livrets");
-		panel.add(btnVosLivrets);
+		panel.add(btnVosLivrets, 2, 0);
 
 		btnVosCredits = new JButton("Vos crédits");
-		panel.add(btnVosCredits);
+		panel.add(btnVosCredits, 1, 0);
 
 		centerPane = new JPanel(new FlowLayout());
 
@@ -71,6 +74,7 @@ public class Principal extends JFrame {
 		getContentPane().add(lblGestionnaireDeComptes, BorderLayout.NORTH);
 		getContentPane().add(centerPane, BorderLayout.CENTER);
 
+		virPanel = new VirementPanel(new LinkedList<Courant>(), new LinkedList<CompteConnu>());
 	}
 
 	public Principal getThis() {
@@ -140,6 +144,17 @@ public class Principal extends JFrame {
 
 	}
 
+	public void affichageVirement(LinkedList<Courant> listCompte, LinkedList<CompteConnu> listConnu){
+		System.out.println(listCompte);
+		virPanel.majComboCompteConnu(listConnu);
+		virPanel.majComboCompte(listCompte);
+		centerPane.removeAll();
+		centerPane.add(virPanel);
+		getContentPane().add(centerPane, BorderLayout.CENTER);
+		this.revalidate();
+		getThis().repaint();
+	}
+
 	public void majCenterPane() {
 		boxCompte.setSize(new Dimension(100, 100));
 		centerPane.removeAll();
@@ -149,6 +164,8 @@ public class Principal extends JFrame {
 		this.getContentPane().add(centerPane, BorderLayout.CENTER);
 		this.revalidate();
 	}
+	
+	
 	public void addBoutonVosCompteListener(ActionListener a) {
 		btnVosComptes.addActionListener(a);
 	}
@@ -163,6 +180,10 @@ public class Principal extends JFrame {
 
 	public void addBoutonVirementListener(ActionListener a) {
 		btnFaireUnVirement.addActionListener(a);
+	}
+
+	public void addBoutonValiderVirementListener(ActionListener a){
+		virPanel.getBtnValider().addActionListener(a);
 	}
 
 	public JComboBox getBoxCompte() {
@@ -185,6 +206,9 @@ public class Principal extends JFrame {
 		return btnVosCredits;
 	}
 
+	public VirementPanel getVirPanel(){
+		return virPanel;
+	}
 
 
 }

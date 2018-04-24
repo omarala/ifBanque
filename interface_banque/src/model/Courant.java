@@ -1,6 +1,6 @@
 package model;
 
-import java.util.LinkedList;
+import controleur.Controleur;
 
 public class Courant extends Compte {
 
@@ -8,14 +8,14 @@ public class Courant extends Compte {
 	public boolean compteConjoint;
 
 
-	public Courant(int idCompte) {
-		super(idCompte);
+	public Courant() {
+		super();
 		this.compteConjoint = false;
 	}
 
 	
-	public Courant(int idCompte, double solde, boolean compteConjoint) {
-		super(idCompte, solde);
+	public Courant( double solde, boolean compteConjoint) {
+		super(solde);
 		this.compteConjoint = compteConjoint;
 	}
 
@@ -26,6 +26,10 @@ public class Courant extends Compte {
 	 */
 	public boolean getCompteConjoint() {
 		return this.compteConjoint;
+	}
+	
+	public boolean isCourant() {
+		return true;
 	}
 
 }

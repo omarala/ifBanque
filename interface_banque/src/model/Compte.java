@@ -3,6 +3,8 @@ package model;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import controleur.Controleur;
+
 /**
  * Classe abstraite d'un compte bancaire, qui sera soit un compte courant ou un
  * compte livret
@@ -18,16 +20,16 @@ public abstract class Compte {
 	private LinkedList<Operation> opAvenir;
 
 	
-	public Compte(int idCompte) {
-		this.idCompte = idCompte;
+	public Compte() {
+		this.idCompte = Controleur.getId();
 		this.solde = 0.0;
 		this.historique = new LinkedList<Operation>();
 		this.opAvenir = new LinkedList<Operation>();
 	}
 	
-	public Compte(int idCompte, double solde) {
+	public Compte(double solde) {
 		super();
-		this.idCompte = idCompte;
+		this.idCompte = Controleur.getId();
 		this.solde = solde;
 		this.historique = new LinkedList<Operation>();
 		this.opAvenir = new LinkedList<Operation>();

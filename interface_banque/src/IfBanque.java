@@ -1,6 +1,6 @@
 
 
-import java.sql.Date;
+import java.util.Random;
 
 import controleur.Controleur;
 import controleur.Utilisateur;
@@ -8,19 +8,20 @@ import model.Compte;
 import model.Courant;
 import model.Model;
 import model.Operation;
+import utilitaires.Date;
 import vue.Vue;
 
-public class ifBanque {
+public class IfBanque {
 
 	public static void main(String[] args) {
-		Compte compte1 = new Courant(123, 12324.5, false);
-		Compte compte2 = new Courant(12342, 123443, false);
-		Compte compte3 = new Courant(2344, 66443.6, true);
+		Compte compte1 = new Courant(12324.5, false);
+		Compte compte2 = new Courant(123443, false);
+		Compte compte3 = new Courant(66443.6, true);
 
 		
-		Operation op1 = new Operation(12534, "ezrjhe", new Date(2244, 1, 5), 1234.6);
-		Operation op2 = new Operation(12734, "credit", new Date(2000, 12, 3), 124.6);
-		Operation op3 = new Operation(12434, "debit", new Date(2001, 12, 3), -1234.6);
+		Operation op1 = new Operation("ezrjhe", new Date(3, 1, 2244), 1234.6);
+		Operation op2 = new Operation("credit", new Date(4, 12, 2003), 124.6);
+		Operation op3 = new Operation("debit", new Date(1, 12, 2331), -1234.6);
 		
 		compte2.getHistorique().add(op1);
 		compte2.getHistorique().add(op2);
@@ -37,5 +38,7 @@ public class ifBanque {
 		
 		Controleur cont = new Controleur(model, view, user);
 	}
+	
+	
 
 }
